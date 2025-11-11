@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuidados del Tatuaje</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Permanent+Marker&family=Rock+Salt&family=Oswald:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Oswald', sans-serif;
+            background: #000;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '★ ✦ ☾ ★ ✦ ☾ ★ ✦ ☾ ★ ✦ ☾ ★ ✦ ☾ ★ ✦ ☾ ★ ✦ ☾ ★ ✦ ☾';
+            position: fixed;
+            top: 10px;
+            left: 0;
+            width: 200%;
+            font-size: 2em;
+            color: #ff1493;
+            opacity: 0.3;
+            animation: scroll 20s linear infinite;
+            z-index: 0;
+        }
+        
+        body::after {
+            content: '☾ ✦ ★ ☾ ✦ ★ ☾ ✦ ★ ☾ ✦ ★ ☾ ✦ ★ ☾ ✦ ★ ☾ ✦ ★ ☾ ✦ ★';
+            position: fixed;
+            bottom: 10px;
+            right: 0;
+            width: 200%;
+            font-size: 2em;
+            color: #ff69b4;
+            opacity: 0.3;
+            animation: scroll-reverse 20s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        @keyframes scroll-reverse {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        .star, .moon {
+            position: absolute;
+            color: #ff1493;
+            font-size: 1.5em;
+            opacity: 0.4;
+            animation: float 3s ease-in-out infinite;
+            z-index: 0;
+        }
+        
+        .star:nth-child(even) {
+            color: #ff69b4;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        .postcard {
+            width: 100%;
+            max-width: 850px;
+            background: #fff;
+            border-radius: 0;
+            box-shadow: 0 0 40px rgba(255, 20, 147, 0.6), 0 0 80px rgba(255, 105, 180, 0.4);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            border: 5px solid #000;
+        }
+        
+        .postcard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: repeating-linear-gradient(
+                90deg,
+                #ff1493 0px,
+                #ff1493 20px,
+                #000 20px,
+                #000 40px
+            );
+            z-index: 10;
+        }
+        
+        .postcard::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: repeating-linear-gradient(
+                90deg,
+                #ff1493 0px,
+                #ff1493 20px,
+                #000 20px,
+                #000 40px
+            );
+            z-index: 10;
+        }
+        
+        .header {
+            background: #000;
+            color: #ff1493;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            border-bottom: 5px solid #ff1493;
+        }
+        
+        .header::before {
+            content: '☾';
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 4em;
+            opacity: 0.3;
+            color: #ff69b4;
+        }
+        
+        .header::after {
+            content: '★';
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%) rotate(15deg);
+            font-size: 4em;
+            opacity: 0.3;
+            color: #ff69b4;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        .header h1 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0 #ff69b4, 4px 4px 0 #000;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ff69b4;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content {
+            padding: 30px;
+            background: #fff;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #ff1493;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            text-shadow: 2px 2px 0 #000;
+            letter-spacing: 2px;
+            transform: rotate(-1deg);
+        }
+        
+        .section-title::before {
+            content: '★';
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+        
+        .section-title::after {
+            content: '★';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+            animation: sparkle 1.5s ease-in-out infinite 0.75s;
+        }
+        
+        .subsection {
+            margin-bottom: 20px;
+            background: #fff;
+            padding: 20px;
+            border: 3px solid #000;
+            position: relative;
+            box-shadow: 5px 5px 0 #ff69b4;
+        }
+        
+        .subsection::before {
+            content: '☾';
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2em;
+            color: #ff1493;
+            background: #fff;
+            padding: 0 10px;
+        }
+        
+        .subsection-title {
+            font-family: 'Rock Salt', cursive;
+            font-weight: 600;
+            color: #ff1493;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .item {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.8;
+            color: #000;
+            font-weight: 500;
+            font-size: 1.05em;
+        }
+        
+        .item::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            color: #ff1493;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .highlight-box {
+            background: #000;
+            color: #ff1493;
+            padding: 25px;
+            border: 5px solid #ff1493;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
+            position: relative;
+        }
+        
+        .highlight-box::before {
+            content: '✦';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2em;
+            color: #ff69b4;
+            background: #000;
+            padding: 0 10px;
+        }
+        
+        .highlight-box h3 {
+            font-family: 'Permanent Marker', cursive;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            color: #fff;
+            text-shadow: 2px 2px 0 #ff1493;
+            letter-spacing: 1px;
+        }
+        
+        .trauma-levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .trauma-level {
+            background: #ff1493;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.95em;
+            font-weight: 600;
+            border: 3px solid #fff;
+            box-shadow: 3px 3px 0 #ff69b4;
+            position: relative;
+        }
+        
+        .trauma-level strong {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 0 #000;
+        }
+        
+        .footer {
+            background: #000;
+            color: #ff1493;
+            padding: 30px;
+            text-align: center;
+            border-top: 5px solid #ff1493;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '★ ☾ ★ ☾ ★';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5em;
+            color: #ff69b4;
+            background: #000;
+            padding: 0 20px;
+        }
+        
+        .footer p {
+            margin: 10px 0;
+            font-size: 1.1em;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .footer p:first-child {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.4em;
+            color: #ff69b4;
+            text-shadow: 2px 2px 0 #ff1493;
+        }
+        
+        .important {
+            background: #fff;
+            border: 4px dashed #ff1493;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
+        }
+        
+        .important::before {
+            content: '☾';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 1.8em;
+            color: #ff1493;
+            background: #fff;
+            padding: 0 10px;
+        }
+        
+        .important strong {
+            color: #ff1493;
+            font-family: 'Rock Salt', cursive;
+            font-size: 1.1em;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .postcard {
+                box-shadow: none;
+                max-width: 100%;
+            }
+            .star, .moon, body::before, body::after {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            .content {
+                padding: 20px;
+            }
+            .trauma-levels {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Estrellas y lunas flotantes -->
+    <div class="star" style="top: 15%; left: 10%;">★</div>
+    <div class="moon" style="top: 25%; left: 85%;">☾</div>
+    <div class="star" style="top: 45%; left: 5%;">✦</div>
+    <div class="star" style="top: 65%; left: 90%;">★</div>
+    <div class="moon" style="top: 80%; left: 8%;">☾</div>
+    <div class="star" style="top: 70%; right: 5%;">✦</div>
+    
+    <div class="postcard">
+        <div class="header">
+            <h1>CUIDADOS DEL TATUAJE</h1>
+            <p>Tu guía completa</p>
+        </div>
+        
+        <div class="content">
+            <!-- ANTES -->
+            <div class="section">
+                <h2 class="section-title">ANTES DE TU SESIÓN</h2>
+                
+                <div class="subsection">
+                    <div class="subsection-title">Prepara tu cuerpo:</div>
+                    <div class="item">Come bien antes de venir (evita mareos y desmayos)</div>
+                    <div class="item">Duerme lo suficiente la noche anterior</div>
+                    <div class="item">Mantente hidratado durante las semanas previas</div>
+                    <div class="item">Evita alcohol y sustancias psicoactivas mínimo 24 horas antes</div>
+                    
+                    <div class="subsection-title" style="margin-top: 20px;">El día de tu cita:</div>
+                    <div class="item">Usa ropa cómoda y oscura (evita fricción e incomodidad)</div>
+                    <div class="item">No te expongas al sol ni apliques sustancias irritantes en la piel</div>
+                    <div class="item">Si necesitas depilarte, hazlo con cuidado o déjanos hacerlo en la sesión</div>
+                    <div class="item">Toma tus medicamentos normalmente (avísame si estás medicado)</div>
+                    <div class="item">Llega con tiempo y sin afanes para lograr el mejor resultado</div>
+                </div>
+                
+                <div class="important">
+                    <strong>💡 Tip:</strong> Si te sientes mareado durante la sesión, avísame. Tengo dulces y carbohidratos para ayudarte.
+                </div>
+            </div>
+            
+            <!-- DESPUÉS - GENERAL -->
+            <div class="section">
+                <h2 class="section-title">DESPUÉS - CUIDADOS PARA TODOS</h2>
+                
+                <div class="subsection">
+                    <div class="subsection-title">❌ EVITA:</div>
+                    <div class="item">Exposición al sol</div>
+                    <div class="item">Alcohol y sustancias psicoactivas (aumenta riesgo de infección)</div>
+                    <div class="item">Deportes intensos, actividades de impacto o relaciones sexuales</div>
+                    <div class="item">Comidas muy grasosas o picantes</div>
+                    <div class="item">Saunas, jacuzzis, piscinas, mar o ríos (riesgo de bacterias)</div>
+                    <div class="item">Contacto de mascotas con la zona tatuada</div>
+                    <div class="item">Tocar el tatuaje con manos o cosas sucias</div>
+                    <div class="item">Rascarte (aunque pique mucho)</div>
+                    
+                    <div class="subsection-title" style="margin-top: 20px;">✅ RECUERDA:</div>
+                    <div class="item">Lava con agua fría (alivia el dolor y la inflamación)</div>
+                    <div class="item">Usa ropa suelta y cómoda</div>
+                    <div class="item">Mantén siempre las manos limpias al tocar tu tatuaje</div>
+                </div>
+            </div>
+            
+            <!-- NIVELES DE TRAUMA -->
+            <div class="section">
+                <h2 class="section-title">¿QUÉ TIPO DE TATUAJE TIENES?</h2>
+                
+                <div class="trauma-levels">
+                    <div class="trauma-level">
+                        <strong>BAJO</strong>
+                        Fine line<br>
+                        Lettering pequeño<br>
+                        Minimalista
+                    </div>
+                    <div class="trauma-level">
+                        <strong>INTERMEDIO</strong>
+                        Sombras<br>
+                        Texturas sencillas
+                    </div>
+                    <div class="trauma-level">
+                        <strong>ALTO</strong>
+                        Rellenos sólidos<br>
+                        Transiciones
+                    </div>
+                    <div class="trauma-level">
+                        <strong>EXTREMO</strong>
+                        Blackout<br>
+                        Brutal black<br>
+                        Hiperrealismo
+                    </div>
+                </div>
+                
+                <div class="important">
+                    <strong>📍 Importante:</strong> El nivel de trauma de tu tatuaje determina cómo cuidarlo. Pregúntame si tienes dudas sobre tu tipo.
+                </div>
+            </div>
+            
+            <!-- MÉTODOS DE CURACIÓN -->
+            <div class="section">
+                <h2 class="section-title">MÉTODOS DE CURACIÓN</h2>
+                
+                <!-- MÉTODO CON PARCHE -->
+                <div class="subsection">
+                    <div class="subsection-title">🩹 MÉTODO 1: Con Parche (Cubierta)</div>
+                    
+                    <div class="important">
+                        <strong>⏱ Primero:</strong> Deja sangrar 10 minutos antes de poner el primer parche.
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h3>Tiempos según tu tipo de tatuaje:</h3>
+                        <div class="trauma-levels">
+                            <div class="trauma-level">
+                                <strong>BAJO-INTERMEDIO</strong>
+                                1er parche: 24h<br>
+                                2do parche: 6-8 días
+                            </div>
+                            <div class="trauma-level">
+                                <strong>ALTO</strong>
+                                1er: 12h<br>
+                                2do: 24h<br>
+                                3er: 6-8 días
+                            </div>
+                            <div class="trauma-level">
+                                <strong>EXTREMO</strong>
+                                1er: 12h<br>
+                                2do: 12h<br>
+                                3er: 24h<br>
+                                4to: varios días
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="subsection-title">¿Cómo cambiar de parche?</div>
+                    <div class="item">Retíralo en la ducha con agua tibia (nunca de forma agresiva)</div>
+                    <div class="item">Lava suavemente con agua tibia y jabón pH neutro</div>
+                    <div class="item">Jabones recomendados: Dove, Acid Mantle, jabones de bebé sin perfume</div>
+                    <div class="item">Seca con cuidado y coloca el siguiente parche</div>
+                    
+                    <div class="subsection-title">Después del último parche:</div>
+                    <div class="item">Aplica crema hidratante cada 8 horas</div>
+                    <div class="item">Opciones: Lubriderm azul (piel normal) o verde (piel sensible)</div>
+                    <div class="item">Continúa por 30 días (tiempo de recuperación completa)</div>
+                </div>
+                
+                <!-- MÉTODO SECO -->
+                <div class="subsection">
+                    <div class="subsection-title">🌬 MÉTODO 2: Curación Seca (con Vinipel)</div>
+                    
+                    <div class="important">
+                        <strong>🩺 Nota:</strong> Este método se recomienda especialmente para personas con dermatitis.
+                    </div>
+                    
+                    <div class="item">Retira el vinipel después de 4-6 horas</div>
+                    <div class="item">Lava con agua fría y jabón pH neutro</div>
+                    
+                    <div class="subsection-title">Frecuencia de lavados según tu tipo de piel:</div>
+                    <div class="item">Piel normal: cada 8 horas</div>
+                    <div class="item">Piel grasa: cada 8-12 horas</div>
+                    <div class="item">Piel seca: cada 6-8 horas</div>
+                    <div class="item">Piel mixta: cada 8 horas</div>
+                    <div class="item">Piel sensible (rojiza, con acné): cada 8 horas</div>
+                    
+                    <div class="subsection-title">¿Cuándo empezar a usar crema?</div>
+                    <div class="item">Trauma BAJO: a las 24 horas</div>
+                    <div class="item">Trauma INTERMEDIO: a las 48 horas</div>
+                    <div class="item">Trauma ALTO: a las 72 horas</div>
+                    <div class="item">Trauma EXTREMO: después de 72 horas (cuando se vea mate)</div>
+                    
+                    <div class="important">
+                        <strong>💡 ¿Por qué esperar?</strong> Las secreciones naturales de tu piel mantienen la zona hidratada. Aplicar crema muy pronto puede sobrehidratar el tatuaje.
+                    </div>
+                    
+                    <div class="item" style="margin-top: 15px;">Después de este tiempo, aplica crema cada 8 horas después de cada lavado</div>
+                </div>
+            </div>
+            
+            <!-- CREMAS RECOMENDADAS -->
+            <div class="section">
+                <h2 class="section-title">¿QUÉ CREMA USAR?</h2>
+                
+                <div class="subsection">
+                    <div class="subsection-title">✅ Busca cremas con:</div>
+                    <div class="item">Vitamina A, B5 (Pantenol - ayuda con la inflamación), D y E</div>
+                    
+                    <div class="subsection-title" style="margin-top: 20px;">❌ EVITA cremas con:</div>
+                    <div class="item">Óxido de zinc, sulfato de plata o dióxido de titanio (pueden aclarar tu tatuaje)</div>
+                    <div class="item">Vaselina o petrolatos como base principal (no dejan respirar la piel)</div>
+                    <div class="item">Corticoides o antibióticos como Teramisina (aumentan riesgo de infección)</div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>Opciones recomendadas:</h3>
+                    <div style="padding-left: 20px; color: #fff; font-weight: 600; line-height: 2;">
+                        <div style="margin: 10px 0;">📦 <strong style="color: #ff69b4;">Venta libre:</strong> Acid Mantle Baby, Dermaglós, Aquaphor</div>
+                        <div style="margin: 15px 0; padding-top: 15px; border-top: 2px solid #ff69b4;">🎨 <strong style="color: #ff69b4;">Emulsiones</strong> (para piel grasa, normal o sensible):<br>Ultra Ink, Happy Ink, Balm</div>
+                        <div style="margin: 15px 0; padding-top: 15px; border-top: 2px solid #ff69b4;">🧈 <strong style="color: #ff69b4;">Anhidras</strong> (para piel seca):<br>Reborn, Happy Ink, Balm, Royal Three</div>
+                    </div>
+                </div>
+                
+                <div class="important">
+                    <strong>🔍 Importante:</strong> Si compras cremas específicas para tatuajes, verifica que tengan registro INVIMA. Pregúntame si tienes dudas sobre qué crema elegir.
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>★ CUIDA TU TATUAJE ★</p>
+            <p>ES PARA TODA LA VIDA</p>
+            <p>¿Dudas o reacciones extrañas? Contáctame de inmediato</p>
+        </div>
+    </div>
+</body>
+</html>
